@@ -31,10 +31,16 @@ public class Main {
         String answer = userInput.nextLine();
         isAStudent = answer.equals("Y");
 
+        /*
         System.out.println(fullName(fName, lName));
         System.out.println(isAdult(age));
         System.out.println(calculateBMI(weight, length));
         System.out.println(lengthInCmAndM(length));
+         */
+
+        System.out.println(userInformationNiceFormat(
+                fName,lName,age, length, weight, isAStudent
+        ));
 
         /*
         System.out.println("Hello " + fName + " " + lName);
@@ -66,7 +72,30 @@ public class Main {
         return weight / (length * length);
     }
 
+    static String isFat(double bmi){
+        return (bmi > 25 ? "is fat" : "not fat");
+    }
+
     static String lengthInCmAndM(double length){
         return length + "m, "+((int) (length * 100)+"cm");
+    }
+
+    static String userInformationNiceFormat(
+            String fName,
+            String lName,
+            int age,
+            double length,
+            int weight,
+            boolean isAStudent
+    ){
+
+        return  "Name: " +fullName(fName, lName) + "\n" +
+                "Age: "+age+"\n"+
+                "Is an adult: "+(isAdult(age) ? "Yes" : "No")+"\n"+
+                "Length in m and cm: " + lengthInCmAndM(length) +"\n"+
+                "Weight: "+weight +"\n"+
+                "BMI: " + calculateBMI(weight, length)+"\n" +
+                "Is " +fName +" fat: " + isFat(calculateBMI(weight, length))+"\n"+
+                "Is a student: "+ (isAStudent ? "Yes" : "No");
     }
 }
