@@ -67,13 +67,19 @@ public class Main {
     static boolean isAdult(int age){
         return (age > 18);
     }
+  /*
+    static String calculateBMI(int weight, double length){
+        return String.format("&.2f", (weight / (length * length)));
+    }
+   */
 
     static double calculateBMI(int weight, double length){
         return weight / (length * length);
     }
 
+
     static String isFat(double bmi){
-        return (bmi > 25 ? "is fat" : "not fat");
+        return (bmi > 25 ? "yes" : "no");
     }
 
     static String lengthInCmAndM(double length){
@@ -91,11 +97,11 @@ public class Main {
 
         return  "Name: " +fullName(fName, lName) + "\n" +
                 "Age: "+age+"\n"+
-                "Is an adult: "+(isAdult(age) ? "Yes" : "No")+"\n"+
+                "Is an adult: "+(isAdult(age) ? "yes" : "no")+"\n"+
                 "Length in m and cm: " + lengthInCmAndM(length) +"\n"+
-                "Weight: "+weight +"\n"+
-                "BMI: " + calculateBMI(weight, length)+"\n" +
-                "Is " +fName +" fat: " + isFat(calculateBMI(weight, length))+"\n"+
-                "Is a student: "+ (isAStudent ? "Yes" : "No");
+                "Weight: "+weight +"kg\n"+
+                "BMI: " + String.format("%.2f", calculateBMI(weight, length))+"\n" +
+                "Is " +fName+" fat: " + isFat(calculateBMI(weight, length))+"\n"+
+                "Is "+fName+" a student: "+ (isAStudent ? "yes" : "no");
     }
 }
