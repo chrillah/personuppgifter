@@ -18,12 +18,17 @@ public class Main {
         // Giving instruction
         System.out.println("Please enter your information");
 
-        System.out.println(ageStats(25));
-        /*
+        // System.out.println(ageStats(25));
+
         System.out.println("Your first name: ");
         fName = userInput.nextLine();
         System.out.println("Your last name: ");
         lName = userInput.nextLine();
+        System.out.println("Your middle name: ");
+        middleName = userInput.nextLine();
+
+        System.out.println(controlUser(fName.trim(), lName.trim(), middleName.trim()));
+        /*
         System.out.println("Your age: ");
         age = userInput.nextInt();
          */
@@ -158,5 +163,24 @@ public class Main {
         }
 
         return ageStat;
+    }
+
+    static String controlUser(String fName, String lName, String middleName){
+        Scanner menu = new Scanner(System.in);
+        String name = "";
+        System.out.println("Select you name presentation");
+        System.out.println("1) First name");
+        System.out.println("2) First name and last name");
+        System.out.println("3) First name, middle name and last name");
+        int choice = menu.nextInt();
+
+        switch(choice){
+            case 1 -> name = fName;
+            case 2 -> name = fullName(fName, lName);
+            case 3 -> name = fName + " " + middleName + " " + lName;
+            default -> System.out.println("Wrong choice");
+        }
+
+        return name;
     }
 }
