@@ -27,7 +27,8 @@ public class Main {
         System.out.println("Your middle name: ");
         middleName = userInput.nextLine();
 
-        System.out.println(controlUser(fName.trim(), lName.trim(), middleName.trim()));
+        vocalCount(controlUser(fName.trim(), lName.trim(), middleName.trim()));
+        // System.out.println(controlUser(fName.trim(), lName.trim(), middleName.trim()));
         /*
         System.out.println("Your age: ");
         age = userInput.nextInt();
@@ -182,5 +183,22 @@ public class Main {
         }
 
         return name;
+    }
+
+    static void vocalCount(String name){
+        name = name.trim().toLowerCase();
+        int numberOfVocals = 0;
+        for(int i = 0; i < name.length(); i++){
+            if(name.charAt(i) == 'a'
+                || name.charAt(i) == 'e'
+                || name.charAt(i) == 'i'
+                || name.charAt(i) == 'o'
+                || name.charAt(i) == 'u'
+                || name.charAt(i) == 'y'){
+                numberOfVocals++;
+            }
+        }
+
+        System.out.println(numberOfVocals);
     }
 }
