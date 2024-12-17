@@ -1,3 +1,4 @@
+import java.util.Date;
 import java.util.Scanner;
 
 public class Main {
@@ -5,6 +6,7 @@ public class Main {
         // Global variables
         String fName;
         String lName;
+        String middleName;
         int age;
         double length;
         int weight;
@@ -15,34 +17,43 @@ public class Main {
 
         // Giving instruction
         System.out.println("Please enter your information");
+
+        System.out.println(ageStats(25));
+        /*
         System.out.println("Your first name: ");
         fName = userInput.nextLine();
         System.out.println("Your last name: ");
         lName = userInput.nextLine();
         System.out.println("Your age: ");
         age = userInput.nextInt();
+         */
+
+        /*
         System.out.println("Your length in meter: ");
         length = userInput.nextDouble();
         System.out.println("Your weight in kg: ");
         weight = userInput.nextInt();
 
         userInput.nextLine();
-        System.out.println("Are you a student? Y or N? ");
-        String answer = userInput.nextLine();
-        isAStudent = answer.equals("Y");
+        System.out.println(controlUser(calculateBMI(weight, length)));
+         */
+
+        // System.out.println("Are you a student? Y or N? ");
+        // String answer = userInput.nextLine();
+        // isAStudent = answer.equals("Y");
 
         /*
         System.out.println(fullName(fName, lName));
         System.out.println(isAdult(age));
         System.out.println(calculateBMI(weight, length));
         System.out.println(lengthInCmAndM(length));
-         */
+
 
         System.out.println(userInformationNiceFormat(
                 fName,lName,age, length, weight, isAStudent
         ));
 
-        /*
+
         System.out.println("Hello " + fName + " " + lName);
         System.out.println("Here is everything I know about you:");
         System.out.println("You are "+age+" years old, you are "+length+" meter,");
@@ -94,14 +105,58 @@ public class Main {
             int weight,
             boolean isAStudent
     ){
-
         return  "Name: " +fullName(fName, lName) + "\n" +
                 "Age: "+age+"\n"+
-                "Is an adult: "+(isAdult(age) ? "yes" : "no")+"\n"+
+               // "Is an adult: "+(isAdult(age) ? "yes" : "no")+"\n"+
+                "Is: "+controlUser(age)+"\n"+
                 "Length in m and cm: " + lengthInCmAndM(length) +"\n"+
                 "Weight: "+weight +"kg\n"+
-                "BMI: " + String.format("%.2f", calculateBMI(weight, length))+"\n" +
+                "BMI: " + String.format("%.2f", calculateBMI(weight, length))+" and is "+controlUser(calculateBMI(weight, length))+"\n" +
                 "Is " +fName+" fat: " + isFat(calculateBMI(weight, length))+"\n"+
                 "Is "+fName+" a student: "+ (isAStudent ? "yes" : "no");
+    }
+
+    static String controlUser(int age){
+        String ageInfo = "";
+
+        if(age < 12){
+            ageInfo = "a child";
+        } else if(age > 12 && age < 18 ){
+            ageInfo = "an youth";
+        } else if(age > 18 && age < 65){
+            ageInfo = "an adult";
+        } else if(age > 65){
+            ageInfo = "very, very, very old";
+        }
+
+        return ageInfo;
+    }
+
+    static String controlUser(double bmi){
+        String bmiInfo = "";
+        if(bmi <= 18.4 ){
+            bmiInfo = "underweight";
+        } else if(bmi >18.4 && bmi < 24.9){
+            bmiInfo = "normal";
+        } else if(bmi > 25.0 && bmi < 39.0){
+            bmiInfo = "overweight";
+        } else if(bmi >= 40.0){
+            bmiInfo = "obese";
+        }
+        return bmiInfo;
+    }
+
+    static String ageStats(int age){
+        String ageStat = "";
+        int futureAge = 10;
+        Date date = new Date();
+        int year = date.getYear() + 1900;
+
+        for(int i = 0; i <= 10; i++){
+            // System.out.println("In the year "+(year + i)+" the age will be "+(age + i));
+            ageStat += "In the year "+(year + i)+" the age will be "+(age + i)+"\n";
+        }
+
+        return ageStat;
     }
 }
