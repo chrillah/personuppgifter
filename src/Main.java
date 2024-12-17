@@ -43,6 +43,6 @@ public class Main {
         System.out.println("Some more shit, why not: in "+ extraYears+" years you will be "+futureAge+" years old...");
 
         int centimeter = (int) (length * 100);
-        System.out.println("Yeah, your length was in meters, why not give it back you as centimeters? Here you go: "+centimeter+"cm");
+        System.out.println("Yeah, your length was in meters, why not give it back to you as centimeters? Here you go: "+centimeter+"cm");
     }
 }
